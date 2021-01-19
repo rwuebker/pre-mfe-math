@@ -13077,6 +13077,16 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Mathematical-Foundations-"><center> Mathematical Foundations </center><a class="anchor-link" href="#-Mathematical-Foundations-">&#182;</a></h2><h2 id="-MFE-Spring-2021-"><center> MFE Spring 2021 </center><a class="anchor-link" href="#-MFE-Spring-2021-">&#182;</a></h2><h2 id="-Assignment-1-"><center> Assignment 1 </center><a class="anchor-link" href="#-Assignment-1-">&#182;</a></h2><p><center>Student Name: Rick Wuebker</p>
+<p><center>ID: richard_wuebker</p>
+<p><center> Solved in team: No</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="1.--Bond-Pricing">1.  Bond Pricing<a class="anchor-link" href="#1.--Bond-Pricing">&#182;</a></h1><blockquote><p><b>a. Derive a formula for the value of a growing perpetuity with growth rate g and discount rate r where:</b></p>
 </blockquote>
 $$ 0 &lt; g &lt; r $$$$ B = \sum\limits_{k=0}^\infty \frac{C(1+g)^k}{(1+r)^{k+1}} $$
@@ -13702,22 +13712,78 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>We define the state price vector, $\psi \in \mathbb{R}^m$ if $\forall \mathbf{h}: \mathbf{h}^T \mathbf{s}_0 =  \mathbf{h}^T D \psi$</center>
+<center>LOOP holds if $\forall \mathbf{h} : \mathbf{h}^T\mathbf{D} = 0 \implies \mathbf{h}^T\mathbf{s}_0 = 0 \;\;\;\;\;$         <b>(1)</b></center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$\implies \mathbf{s}_0 = \mathbf{D} \psi$$
+<center>We define the state price vector, $\psi \in \mathbb{R}^m$ if $\forall \mathbf{h}: \mathbf{h}^T \mathbf{s}_0 =  \mathbf{h}^T D \psi \;\;\;\;\;\;\;$<b>(2)</b></center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><center> This equality ensures that if any two assets have the same outcomes in $\mathbf{D}$ then their prices in $\mathbf{s}_0$ will be the same.</p>
+<center>In <b>(2)</b> if $\mathbf{h}^T\mathbf{D} = \mathbf{0} \implies \mathbf{h}^T\mathbf{s}_0 = 0$ but this equality holds only where the state price vector exists.</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\mathbf{h}^T\mathbf{s}_0 = \mathbf{h}^T\mathbf{D}\mathbf{\psi}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$0 = \mathbf{h}^T\mathbf{-s}_0 + \mathbf{h}^T\mathbf{D}\mathbf{\psi}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ 0 = \mathbf{h}^T [-\mathbf{s}_0 ; \mathbf{D}] \begin{bmatrix} 1 \\ \mathbf{\psi} \end{bmatrix} $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><center>Let $\mathbf{\overline{D}} = [-\mathbf{s}_0 | \mathbf{D}] \in \mathbb{R}^{NxM+1}$ be the augemented payoff matrix.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>$\implies \begin{bmatrix} 1 \\ \psi \end{bmatrix} \in Nullspace\Big(\mathbf{\overline{D}}\Big)$</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>Result of fundamental theorem of linear algebra: $Nullspace \Big(\overline{\mathbf{D}}\Big) \oplus range\Big(\overline{\mathbf{D}}^T\Big)$ = M + 1</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center> $\implies Nullspace(\mathbf{D})$ exists when $range\big(\mathbf{\overline{D}}^T\big) <= M$ </center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>Conversely if $\psi$ doesn't exist then neither does <b>(2)</b> and <b>(1)</b> doesn't hold</center>
 </div>
 </div>
 </div>
@@ -13776,7 +13842,7 @@ $$\implies \mathbf{s}_0 = \mathbf{D} \psi$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ \implies Nullspace \Big({\mathbf{D}}\Big) = 1 \because rank\Big(\overline{\mathbf{D}}^T\Big) = M $$
+$$ \implies Dim(Nullspace \Big({\mathbf{D}}\Big)) = 1 \because rank\Big(\overline{\mathbf{D}}^T\Big) = M $$
 </div>
 </div>
 </div>
@@ -13785,6 +13851,13 @@ $$ \implies Nullspace \Big({\mathbf{D}}\Big) = 1 \because rank\Big(\overline{\ma
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center> $\implies \psi$ is unique and only scalar multiples of $\begin{bmatrix} 1 \\ \psi \end{bmatrix}$ exist</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>Conversely, if the market is not complete, $\implies$ rank($\mathbf{\overline{D}}) < M \implies \; Dim(Nullspace(\mathbf{\overline{D}})) > 1 \implies \psi$ exists in a plane or higher space with multiple solutions.</center>
 </div>
 </div>
 </div>
@@ -14110,7 +14183,7 @@ $$ Q = \begin{bmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\ \frac{1}{\
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.collections.PathCollection at 0x116c28b00&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x12024aa20&gt;</pre>
 </div>
 
 </div>
@@ -14335,7 +14408,7 @@ $$ \mathbf{x} = \begin{bmatrix} -0.4194 \\ -0.9078 \end{bmatrix} $$
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.collections.PathCollection at 0x116d48048&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x120352780&gt;</pre>
 </div>
 
 </div>
