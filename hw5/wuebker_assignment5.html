@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>wuebker_assignment2</title>
+<title>wuebker_assignment5</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13077,7 +13077,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Mathematical-Foundations-"><center> Mathematical Foundations </center><a class="anchor-link" href="#-Mathematical-Foundations-">&#182;</a></h2><h2 id="-MFE-Spring-2021-"><center> MFE Spring 2021 </center><a class="anchor-link" href="#-MFE-Spring-2021-">&#182;</a></h2><h2 id="-Assignment-2-"><center> Assignment 2 </center><a class="anchor-link" href="#-Assignment-2-">&#182;</a></h2><p><center>Student Name: Rick Wuebker</p>
+<h2 id="-Mathematical-Foundations-"><center> Mathematical Foundations </center><a class="anchor-link" href="#-Mathematical-Foundations-">&#182;</a></h2><h2 id="-MFE-Spring-2021-"><center> MFE Spring 2021 </center><a class="anchor-link" href="#-MFE-Spring-2021-">&#182;</a></h2><h2 id="-Assignment-5-"><center> Assignment 5 </center><a class="anchor-link" href="#-Assignment-5-">&#182;</a></h2><p><center>Student Name: Rick Wuebker</p>
 <p><center>ID: richard_wuebker</p>
 <p><center> Solved in team: No</p>
 
@@ -13087,394 +13087,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="1.-Stochastic-Matrices">1. Stochastic Matrices<a class="anchor-link" href="#1.-Stochastic-Matrices">&#182;</a></h1><blockquote><p><b>Given the below transition matrix</b></p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.8f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">l</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.90788</span><span class="p">,</span> <span class="mf">0.08291</span><span class="p">,</span> <span class="mf">0.00716</span><span class="p">,</span> <span class="mf">0.00102</span><span class="p">,</span> <span class="mf">0.00102</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-     <span class="p">[</span><span class="mf">0.00103</span><span class="p">,</span> <span class="mf">0.91219</span><span class="p">,</span> <span class="mf">0.07851</span><span class="p">,</span> <span class="mf">0.00620</span><span class="p">,</span> <span class="mf">0.00103</span><span class="p">,</span> <span class="mf">0.00103</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-     <span class="p">[</span><span class="mf">0.00924</span><span class="p">,</span> <span class="mf">0.02361</span><span class="p">,</span> <span class="mf">0.90041</span><span class="p">,</span> <span class="mf">0.05441</span><span class="p">,</span> <span class="mf">0.00719</span><span class="p">,</span> <span class="mf">0.00308</span><span class="p">,</span> <span class="mf">0.00103</span><span class="p">,</span> <span class="mf">0.00103</span><span class="p">],</span>
-     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.00318</span><span class="p">,</span> <span class="mf">0.05938</span><span class="p">,</span> <span class="mf">0.86947</span><span class="p">,</span> <span class="mf">0.05302</span><span class="p">,</span> <span class="mf">0.011166</span><span class="p">,</span> <span class="mf">0.00117</span><span class="p">,</span> <span class="mf">0.00212</span><span class="p">],</span>
-     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.00110</span><span class="p">,</span> <span class="mf">0.00659</span><span class="p">,</span> <span class="mf">0.07692</span><span class="p">,</span> <span class="mf">0.80549</span><span class="p">,</span> <span class="mf">0.08791</span><span class="p">,</span> <span class="mf">0.00989</span><span class="p">,</span> <span class="mf">0.01209</span><span class="p">],</span>
-     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.00114</span><span class="p">,</span> <span class="mf">0.00227</span><span class="p">,</span> <span class="mf">0.00454</span><span class="p">,</span> <span class="mf">0.06470</span><span class="p">,</span> <span class="mf">0.82747</span><span class="p">,</span> <span class="mf">0.04086</span><span class="p">,</span> <span class="mf">0.05902</span><span class="p">],</span>
-     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.00456</span><span class="p">,</span> <span class="mf">0.01251</span><span class="p">,</span> <span class="mf">0.02275</span><span class="p">,</span> <span class="mf">0.12856</span><span class="p">,</span> <span class="mf">0.60637</span><span class="p">,</span> <span class="mf">0.22526</span><span class="p">],</span>
-     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-<span class="n">ix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AAA&#39;</span><span class="p">,</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;BBB&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;CCC&#39;</span><span class="p">,</span> <span class="s1">&#39;Default&#39;</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">phi</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ix</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ix</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[1]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AAA</th>
-      <th>AA</th>
-      <th>A</th>
-      <th>BBB</th>
-      <th>BB</th>
-      <th>B</th>
-      <th>CCC</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>AAA</th>
-      <td>0.90788000</td>
-      <td>0.08291000</td>
-      <td>0.00716000</td>
-      <td>0.00102000</td>
-      <td>0.00102000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-    </tr>
-    <tr>
-      <th>AA</th>
-      <td>0.00103000</td>
-      <td>0.91219000</td>
-      <td>0.07851000</td>
-      <td>0.00620000</td>
-      <td>0.00103000</td>
-      <td>0.00103000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-    </tr>
-    <tr>
-      <th>A</th>
-      <td>0.00924000</td>
-      <td>0.02361000</td>
-      <td>0.90041000</td>
-      <td>0.05441000</td>
-      <td>0.00719000</td>
-      <td>0.00308000</td>
-      <td>0.00103000</td>
-      <td>0.00103000</td>
-    </tr>
-    <tr>
-      <th>BBB</th>
-      <td>0.00000000</td>
-      <td>0.00318000</td>
-      <td>0.05938000</td>
-      <td>0.86947000</td>
-      <td>0.05302000</td>
-      <td>0.01116600</td>
-      <td>0.00117000</td>
-      <td>0.00212000</td>
-    </tr>
-    <tr>
-      <th>BB</th>
-      <td>0.00000000</td>
-      <td>0.00110000</td>
-      <td>0.00659000</td>
-      <td>0.07692000</td>
-      <td>0.80549000</td>
-      <td>0.08791000</td>
-      <td>0.00989000</td>
-      <td>0.01209000</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>0.00000000</td>
-      <td>0.00114000</td>
-      <td>0.00227000</td>
-      <td>0.00454000</td>
-      <td>0.06470000</td>
-      <td>0.82747000</td>
-      <td>0.04086000</td>
-      <td>0.05902000</td>
-    </tr>
-    <tr>
-      <th>CCC</th>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00456000</td>
-      <td>0.01251000</td>
-      <td>0.02275000</td>
-      <td>0.12856000</td>
-      <td>0.60637000</td>
-      <td>0.22526000</td>
-    </tr>
-    <tr>
-      <th>Default</th>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>0.00000000</td>
-      <td>1.00000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(a) What is the probability that a bond over two years moves from an AA rating to Default?</b></p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">phi_sq</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phi_sq</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2.1869e-05
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \Phi^2 = \begin{bmatrix}
-0.82439765 &amp; 0.15107542 &amp; 0.01952391 &amp; 0.00279497 &amp;  0.0019386 &amp;0.00020851&amp; 0.00001866&amp; 0.00002187 \\ 
-0.0026001 &amp; 0.83405164&amp; 0.14269188&amp; 0.01540298&amp; 0.00273011&amp; 0.00219344&amp; 0.00014039&amp; 0.00016725 \\
-0.01673292&amp; 0.04374602&amp; 0.81594788&amp; 0.0970349 &amp; 0.01540669&amp; 0.00671822&amp; 0.0018126 &amp; 0.0025735 \\
-0.00055195&amp; 0.00713869&amp; 0.10572522&amp; 0.76337229&amp; 0.08998565&amp; 0.0239456 &amp; 0.0027685 &amp; 0.00558802 \\
-0.00006202&amp; 0.00238986&amp; 0.01614041&amp; 0.12972614&amp; 0.65885373&amp; 0.14570529&amp; 0.01765208&amp; 0.0294145 \\
-0.00002215&amp; 0.00212241&amp; 0.00489407&amp; 0.01332257&amp; 0.10684028&amp; 0.6957062 &amp; 0.05923424&amp; 0.11785559 \\
-0.00004213&amp; 0.00031903&amp; 0.00805551&amp; 0.02104446&amp; 0.04113371&amp; 0.18648815&amp; 0.37318187&amp; 0.36974478 \\
-0.        &amp; 0.        &amp; 0.        &amp; 0.        &amp; 0.        &amp;0.        &amp; 0.        &amp; 1. \\
-\end{bmatrix}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>$ \Phi^2[0,7] = 0.002187$%</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(b) What is the long-term (stationary) distribution, $\mathbf{p}$, of the ratings for a corporate bond with the above transition matrix (assuming that it has a very long maturity state)?</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_phi</span> <span class="o">=</span> <span class="n">phi</span>
-<span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
-    <span class="n">old_phi</span> <span class="o">=</span> <span class="n">new_phi</span>
-    <span class="n">new_phi</span> <span class="o">=</span> <span class="n">old_phi</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">new_phi</span><span class="p">,</span> <span class="n">old_phi</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">):</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;converged after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> iterations!&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_phi</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ix</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ix</span><span class="p">))</span>
-        <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">break</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">converged</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;failed to converge&#39;</span><span class="p">)</span>
-
-    
-    
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>converged after 1460 iterations!
-               AAA         AA          A        BBB         BB          B  \
-AAA     0.00000000 0.00000000 0.00000001 0.00000001 0.00000000 0.00000000   
-AA      0.00000000 0.00000000 0.00000001 0.00000001 0.00000000 0.00000000   
-A       0.00000000 0.00000000 0.00000001 0.00000000 0.00000000 0.00000000   
-BBB     0.00000000 0.00000000 0.00000001 0.00000000 0.00000000 0.00000000   
-BB      0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000   
-B       0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000   
-CCC     0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000   
-Default 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000   
-
-               CCC    Default  
-AAA     0.00000000 0.98875433  
-AA      0.00000000 0.98882510  
-A       0.00000000 0.98889601  
-BBB     0.00000000 0.98763573  
-BB      0.00000000 0.99281930  
-B       0.00000000 0.99625655  
-CCC     0.00000000 0.99786619  
-Default 0.00000000 1.00000000  
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Multiplying $\Phi$ by itself 10000 times is converging to: </center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \Phi^{1000} \approx \begin{bmatrix}
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-\end{bmatrix}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Implying that over the very long-term, according to this markov process, the probability of default is $\approx$ 100% no matter the starting state.</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \mathbf{p} = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Portfolio-Optimization">2. Portfolio Optimization<a class="anchor-link" href="#2.-Portfolio-Optimization">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$u_0 = \mathbf{h}^T\mathbf{\mu} \tag{1}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \mathbf{h}^T\mathbf{1} = 1.00 \tag{2}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ U(\mathbf{h}) = \mathbf{h}^T\mathbf{\mu} - \frac{\gamma}{2}\mathbf{h}^T\Sigma\mathbf{h} \tag{3}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$A = \mathbf{1}^T\Sigma^{-1}\mathbf{1} \;\;\;\;\;\;\;B=\mathbf{1}^T\Sigma^{-1}\mu\;\;\;\;\;\;C = \mathbf{\mu}^T\Sigma^{-1}\mathbf{\mu} \;\;\;\;\;\;\; \Delta = AC - B^2 &gt; 0 \;\;\;\;\;\;\; \mathbf{w_A} = \frac{1}{A}\Sigma^{-1}\mathbf{1} \;\;\;\;\;\;\; \mathbf{w_B} = \frac{1}{B}\Sigma^{-1}\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(a) Derive a formula for the optimal portfolio, $\mathbf{h}$, satisfying (1) and (2) and maximizing (3). Express the formula as a function of A, B, C, $\Delta$, $\mu_0$, $w_A$ and $w_B$</b></p>
+<h1 id="1.-Probability-Spaces">1. Probability Spaces<a class="anchor-link" href="#1.-Probability-Spaces">&#182;</a></h1><blockquote><p><b>Consider the state space $\Omega = \{\omega_1, \omega_2, \omega_3, \omega_4\}$, with the associated $\sigma$-algebra $\mathcal{F} = 2^{\Omega}$, and probability measures $\mathbb{P}$ and $\mathbb{Q}$ defined by: </b></p>
 </blockquote>
 
 </div>
@@ -13483,276 +13096,19 @@ $$A = \mathbf{1}^T\Sigma^{-1}\mathbf{1} \;\;\;\;\;\;\;B=\mathbf{1}^T\Sigma^{-1}\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$L(\mathbf{h}, \lambda_1, \lambda_2) = \mathbf{h}^T\mu - \frac{\gamma}{2}\mathbf{h}^T\Sigma\mathbf{h} + \lambda_1(\mathbf{h}^T\mathbf{1} - 1) + \lambda_2(\mathbf{h}^T\mu - \mu_0)$$
+\begin{array}{c|cccc}
+i &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\
+\hline
+\mathbb{Q}(\omega_i) &amp; 0.1 &amp; 0 &amp; 0.5 &amp; 0.4 \\
+\mathbb{P}(\omega_i) &amp; 0.4 &amp; 0.1 &amp; 0.1 &amp; 0.4
+\end{array}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\partial{L}}{\partial{\mathbf{h}}} = \mu - \gamma\Sigma\mathbf{h} + \lambda_1\mathbf{1} + \lambda_2\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \mu - \gamma\Sigma\mathbf{h} + \lambda_1\mathbf{1} + \lambda_2\mathbf{\mu} = \mathbf{0}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$- \gamma\Sigma\mathbf{h} = -\mu -\lambda_1\mathbf{1} - \lambda_2\mathbf{\mu} $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\Sigma\mathbf{h} = \frac{1}{\gamma}\mu + \frac{\lambda_1}{\gamma}\mathbf{1} + \frac{\lambda_2}{\gamma}\mathbf{\mu} $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\Sigma^{-1}\Sigma\mathbf{h} = \frac{1}{\gamma}\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\Sigma^{-1}\mathbf{\mu} $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\mathbf{h} = \frac{1}{\gamma}\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\Sigma^{-1}\mathbf{\mu} \tag{4}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Will solve the two below equations for $\lambda_1$ and $\lambda_2$</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\mathbf{1}^T\mathbf{h} = \frac{1}{\gamma}\mathbf{1}^T\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\mathbf{1}^T\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\mathbf{1}^T\Sigma^{-1}\mathbf{\mu} = 1 \;\;\;\;\;\;\;\;\;\; \mathbf{\mu}^T\mathbf{h} = \frac{1}{\gamma}\mathbf{\mu}^T\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\mathbf{\mu}^T\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\mathbf{\mu}^T\Sigma^{-1}\mathbf{\mu} = \mu_{0}$$<p></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{1}{\gamma}\mathbf{1}^T\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\mathbf{1}^T\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\mathbf{1}^T\Sigma^{-1}\mathbf{\mu} = 1 $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$B + \lambda_1A + \lambda_2B = \gamma $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\lambda_1A  = \gamma - B - \lambda_2B $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\lambda_1  = \frac{\gamma - B - B\lambda_2}{A} \tag{5}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Plugging this result into the second equation above</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{1}{\gamma}\mathbf{\mu}^T\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\mathbf{\mu}^T\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\mathbf{\mu}^T\Sigma^{-1}\mathbf{\mu} = \mu_{0}$$<p></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{1}{\gamma}C + \bigg(\frac{\gamma - B - B\lambda_2}{A}\bigg)\bigg(\frac{\mathbf{\mu}^T\Sigma^{-1}\mathbf{1}}{\gamma}\bigg) + \frac{\lambda_2}{\gamma}C = \mu_{0}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><center>Note: since $\Sigma$ is symmetric, $\Sigma^{-1}$ is also symmetric $\implies \mu^T\Sigma^{-1}\mathbf{1} = \mathbf{1}^T\Sigma^{-1}\mathbf{\mu} = B$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{1}{\gamma}C + \bigg(\frac{\gamma - B - B\lambda_2}{A}\bigg)\bigg(\frac{B}{\gamma}\bigg) + \frac{\lambda_2}{\gamma}C = \mu_{0}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$AC + B\gamma - B^2 - \lambda_2B^2 + \lambda_2AC = \mu_{0}A\gamma$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \lambda_2(AC-B^2) = \mu_{0}A\gamma - AC - B\gamma + B^2$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \lambda_2= \frac{\mu_{0}A\gamma - AC - B\gamma + B^2}{\Delta}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Plugging $\lambda_2$ into (5) above.</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\lambda_1  = \frac{1}{A}(\gamma - B - B\lambda_2) \tag{5}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\lambda_1  = \frac{1}{A}\bigg[\gamma - B - B\bigg(\frac{\mu_{0}A\gamma - AC - B\gamma + B^2}{\Delta}\bigg)\bigg]$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$A\Delta\lambda_1  = \Delta\gamma -\Delta B - B(\mu_{0}A\gamma - AC - B\gamma + B^2)$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$A\Delta\lambda_1  = \Delta\gamma -\Delta B - \mu_{0}\gamma AB + ABC + \gamma B^2 -B^3$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\lambda_1  = \frac{\Delta\gamma -\Delta B - \mu_{0}\gamma AB + ABC + \gamma B^2 -B^3}{A\Delta}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\lambda_1  = \frac{\Delta\gamma - \gamma B^2 + \mu_{0}\gamma AB}{A\Delta}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Now plugging $\lambda_1$ and $\lambda_2$ back into (4)</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\mathbf{h} = \frac{1}{\gamma}\Sigma^{-1}\mu + \frac{\lambda_1}{\gamma}\Sigma^{-1}\mathbf{1} + \frac{\lambda_2}{\gamma}\Sigma^{-1}\mathbf{\mu} \tag{4}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\gamma\mathbf{h} = \Sigma^{-1}\mu + \lambda_1\Sigma^{-1}\mathbf{1} + \lambda_2\Sigma^{-1}\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\gamma\mathbf{h} = \Sigma^{-1}\mu + \frac{\Delta\gamma -\Delta B - \mu_{0}\gamma AB + ABC + \gamma B^2 -B^3}{\Delta}\mathbf{w}_A + \frac{\mu_{0}A\gamma - AC - B\gamma + B^2}{\Delta}\Sigma^{-1}\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\Delta\gamma\mathbf{h} = \Delta\Sigma^{-1}\mu + (\Delta\gamma -\Delta B - \mu_{0}\gamma AB + ABC + \gamma B^2 -B^3)\mathbf{w}_A + (\mu_{0}A\gamma - AC - B\gamma + B^2)\Sigma^{-1}\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\Delta\gamma\mathbf{h} = \Delta\Sigma^{-1}\mu + ((AC-B^2)\gamma - B(AC-B^2) - \mu_{0}\gamma AB + ABC + \gamma B^2 -B^3)\mathbf{w}_A + (\mu_{0}A\gamma - AC - B\gamma + B^2)\Sigma^{-1}\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\Delta\gamma\mathbf{h} = \Delta\Sigma^{-1}\mu + (\gamma AC - \mu_{0}\gamma AB)\mathbf{w}_A + (\mu_{0}A\gamma -\Delta - B\gamma)\Sigma^{-1}\mathbf{\mu}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\Delta\gamma}{B}\mathbf{h} = \Delta\mathbf{w}_B + \frac{\gamma\mathbf{w}_A}{B}(AC - \mu_{0} AB) + \mathbf{w}_B(-\Delta - \gamma B + \mu_{0}A\gamma)$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\Delta\gamma}{B}\mathbf{h} = \frac{\gamma\mathbf{w}_A}{B}(AC - \mu_{0} AB) + \gamma\mathbf{w}_B(\mu_{0}A - B)$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\mathbf{h} = \mathbf{w}_A\frac{(AC - \mu_{0} AB)}{\Delta} + \mathbf{w}_B\frac{(\mu_{0}AB - B^2)}{\Delta}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(b) Use your results from (a) to write $\sigma^2_h$ as a quadratic function of $\mu_0$ using only the parameters A, B, C and $\Delta$. This function is known as the minimum variance frontier.&lt;/center&gt;</p>
+<blockquote><p><b>(a) Are $\mathbb{P}$ and $\mathbb{P}$ equivalent probability measures?</b></p>
 </blockquote>
 
 </div>
@@ -13761,130 +13117,15 @@ $$\mathbf{h} = \mathbf{w}_A\frac{(AC - \mu_{0} AB)}{\Delta} + \mathbf{w}_B\frac{
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \mathbf{h}^T\Sigma\mathbf{h} $$
+<p>No, $\mathbb{P}$ and $\mathbb{Q}$ are not equivalent because they disagree on which events have 0 probability, specifically $\mathbb{Q}(\omega_{2}) = 0$ however $\mathbb{P}(\omega_2) = 0.1$.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \bigg[\mathbf{w}_A\frac{(AC - \mu_{0} AB)}{\Delta} + \mathbf{w}_B\frac{(\mu_{0}AB - B^2)}{\Delta}\bigg]^T \Sigma \bigg[\mathbf{w}_A\frac{(AC - \mu_{0} AB)}{\Delta} + \mathbf{w}_B\frac{(\mu_{0}AB - B^2)}{\Delta}\bigg]$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \bigg[\mathbf{w}_A\frac{(AC - \mu_{0} AB)}{\Delta} + \mathbf{w}_B\frac{(\mu_{0}AB - B^2)}{\Delta}\bigg]^T \Sigma \bigg[\Sigma^{-1}\mathbf{1}\frac{(AC - \mu_{0} AB)}{A\Delta} + \Sigma^{-1}\mathbf{1}\frac{(\mu_{0}AB - B^2)}{B\Delta}\bigg]$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \bigg[\mathbf{w}_A\frac{(AC - \mu_{0} AB)}{\Delta} + \mathbf{w}_B\frac{(\mu_{0}AB - B^2)}{\Delta}\bigg]^T \bigg[\mathbf{1}\frac{(AC - \mu_{0} AB)}{A\Delta} + \overrightarrow{\mu}\frac{(\mu_{0}AB - B^2)}{B\Delta}\bigg]$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \Bigg[\bigg[\Sigma^{-1}\mathbf{1}\frac{(AC - \mu_{0} AB)}{A\Delta}\bigg]^T + \bigg[\Sigma^{-1}\overrightarrow{\mu}\frac{(\mu_{0}AB - B^2)}{B\Delta}\bigg]^T\Bigg] \bigg[\mathbf{1}\frac{(AC - \mu_{0} AB)}{A\Delta} + \overrightarrow{\mu}\frac{(\mu_{0}AB - B^2)}{B\Delta}\bigg]$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \Bigg[\bigg[\mathbf{1}^T \Sigma^{-1^T} \frac{(AC - \mu_{0} AB)}{A\Delta}\bigg] + \bigg[\overrightarrow{\mu}^T\Sigma^{-1^T}\frac{(\mu_{0}AB - B^2)}{B\Delta}\bigg]\Bigg] \bigg[\mathbf{1}\frac{(AC - \mu_{0} AB)}{A\Delta} + \overrightarrow{\mu}\frac{(\mu_{0}AB - B^2)}{B\Delta}\bigg]$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \mathbf{1}^T \Sigma^{-1^T}\mathbf{1}\frac{(AC - \mu_{0} AB)^2}{(A\Delta)^2} + 
-\mathbf{1}^T \Sigma^{-1^T}\overrightarrow{\mu}\frac{(AC - \mu_{0} AB)(\mu_{0}AB - B^2)}{AB\Delta^2} + 
-\overrightarrow{\mu}^T\Sigma^{-1^T}\mathbf{1}\frac{(\mu_0 AB - B^2)(AC - \mu_0 AB)}{AB\Delta^2} +
-\overrightarrow{\mu}^T\Sigma^{-1^T}\overrightarrow{\mu}\frac{(\mu_0 AB - B^2)^2}{(B\Delta)^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = A\frac{(AC - \mu_{0} AB)^2}{(A\Delta)^2} + 
-B\frac{(AC - \mu_{0} AB)(\mu_{0}AB - B^2)}{AB\Delta^2} + 
-B\frac{(\mu_0 AB - B^2)(AC - \mu_0 AB)}{AB\Delta^2} +
-C\frac{(\mu_0 AB - B^2)^2}{(B\Delta)^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = \frac{(AC - \mu_{0} AB)^2}{A\Delta^2} + 
-2\frac{(AC - \mu_{0} AB)(\mu_{0}AB - B^2)}{A\Delta^2} + 
-C\frac{(\mu_0 AB - B^2)^2}{(B\Delta)^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = 
-\frac{A^2C^2 -2A^2BC\mu_0 + \mu_0^2A^2B^2}{A\Delta^2} + 
-\frac{2A^2BC\mu_0 - 2\mu_0^2A^2B^2 - 2ACB^2 +2AB^3\mu_0}{A\Delta^2} + 
-\frac{A^2B^2C\mu_0^2 - 2AB^3C\mu_0 + B^4C}{(B\Delta)^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = 
-\frac{AC^2 -2ABC\mu_0 + \mu_0^2AB^2}{\Delta^2} + 
-\frac{2ABC\mu_0 - 2\mu_0^2AB^2 - 2CB^2 +2B^3\mu_0}{\Delta^2} + 
-\frac{A^2C\mu_0^2 - 2ABC\mu_0 + B^2C}{\Delta^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = 
-\frac{(A^2C - AB^2)}{\Delta^2}\mu_0^2 + \frac{2B^3 - 2ABC}{\Delta^2}\mu_0 + \frac{AC^2 - B^2C}{\Delta^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = 
-A\frac{(AC - B^2)}{\Delta^2}\mu_0^2 + 2B\frac{B^2 - AC}{\Delta^2}\mu_0 + C\frac{AC - B^2}{\Delta^2}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \sigma^2_h = 
-\frac{A}{\Delta}\mu_0^2 - \frac{2B}{\Delta}\mu_0 + \frac{C}{\Delta}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(c) Now assume the investor actually chooses $\mu_0$ to maximize (6), given risk aversion coefficient $\gamma$. Use your previous results to write the optimal $\mu_0$ as a function of the previous parameters and $\gamma$. </b></p>
+<blockquote><p><b>What is the Radon-Nikodym derivative $\frac{d \mathbb{Q}}{d \mathbb{P}}$?</p>
 </blockquote>
 
 </div>
@@ -13893,117 +13134,23 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$U(\mathbf{h}) = \mu_0 - \frac{\gamma}{2}\sigma_{\mathbf{h}}^2$$
+\begin{matrix}
+L(\{\emptyset\}) = 0 &amp; L(\{\omega_1\}) = \frac{0.1}{0.4} = 0.25 \\
+L(\{\omega_2\}) = \frac{0}{0.1} = 0 &amp; L(\{\omega_3\}) = \frac{0.5}{0.1} = 5 \\
+L(\{\omega_4\}) = \frac{0.4}{0.4} = 1.00 &amp; L(\{\omega_1, \omega_2\}) = \frac{0.1 + 0.0}{0.4 + 0.1} = 0.2 \\
+L(\{\omega_1, \omega_3 \}) = \frac{0.1 + 0.5}{0.4 + 0.1} = 1.2  &amp; L(\{\omega_1, \omega_4\}) = \frac{0.1 + 0.4}{0.4 + 0.4} = 0.625 \\
+L(\{\omega_2, \omega_3\}) = \frac{0.0 + 0.5}{0.1 + 0.1} = 2.5 &amp; L(\{\omega_2, \omega_4\}) = \frac{0.0 + 0.4}{0.1 + 0.4} = 0.8 \\
+L(\{\omega_3, \omega_4\}) = \frac{0.5 + 0.4}{0.1 + 0.4} = 1.80 &amp; L(\{\omega_1, \omega_2, \omega_3\}) = \frac{0.1 + 0.0 + 0.5}{0.4 + 0.1 + 0.4} = 1.00 \\
+L(\{\omega_1, \omega_2, \omega_4\}) =  \frac{0.1 + 0.0 + 0.4}{0.4 + 0.1 + 0.4} = 0.556 &amp; L(\{\omega_1, \omega_3, \omega_4\}) = \frac{0.1 + 0.5 + 0.4}{0.4 + 0.1 + 0.4} = 1.111 \\
+L(\{\omega_2, \omega_3, \omega_4\}) = \frac{0 + 0.5 + 0.4}{0.1 + 0.1 + 0.4} = 1.5 &amp; L(\{\Omega\}) = 1
+\end{matrix}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$U(\mathbf{h}) = \mu_0 - \frac{\gamma}{2}\bigg(\frac{A}{\Delta}\mu_0^2 - \frac{2B}{\Delta}\mu_0 + \frac{C}{\Delta}\bigg)$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\partial{U}}{\partial{\mu_0}} = 1 - \frac{\gamma}{2}\bigg(\frac{2A}{\Delta}\mu_0 - \frac{2B}{\Delta}\bigg) = 0$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\gamma}{2}\bigg(\frac{2A}{\Delta}\mu_0 - \frac{2B}{\Delta}\bigg) = 1$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\gamma A}{\Delta}\mu_0 - \frac{\gamma B}{\Delta} = 1$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{\gamma A}{\Delta}\mu_0  = 1 + \frac{\gamma B}{\Delta}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\mu_0  = \frac{\Delta}{\gamma A} + \frac{\gamma B}{\gamma A} = \frac{\Delta + \gamma B}{\gamma A}$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-Portfolio-Optimization-with-a-Risk-Free-Asset">3. Portfolio Optimization with a Risk-Free Asset<a class="anchor-link" href="#3.-Portfolio-Optimization-with-a-Risk-Free-Asset">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(a) Show that there is a so-called one-fund separation in the market in this case, in that all investors, regardless of their $\gamma$, will hold the same stock market portfolio:</b></p>
-</blockquote>
-$$\mathbf{w} = \frac{1}{B - AR}\Sigma^{-1}(\mathbf{\mu} - R\mathbf{1})$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ U(\mathbf{h}) = R + \mathbf{h}^T(\mu - R\mathbf{1}) - \frac{\gamma}{2}\mathbf{h}^T\Sigma\mathbf{h} $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \frac{\partial{U}}{\partial{h}} = \mu - R\mathbf{1} - \gamma\Sigma\mathbf{h}  = 0$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\gamma\Sigma\mathbf{h} = \mu - R\mathbf{1} $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$\mathbf{h} = \frac{1}{\gamma}\Sigma^{-1}(\mu - R\mathbf{1}) $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Let $w = $ the stock market portfolio.</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ w = \frac{\mathbf{h}}{\mathbf{1}^T\mathbf{h}} = \frac{\Sigma^{-1}(\mu - R\mathbf{1})}{\mathbf{1}^T\Sigma^{-1}(\mu - R\mathbf{1})} = 
- \frac{\Sigma^{-1}(\mu - R\mathbf{1})}{\mathbf{1}^T\Sigma^{-1}\mu - R\mathbf{1}^T\Sigma^{-1}\mathbf{1}} = 
-  \frac{\Sigma^{-1}(\mu - R\mathbf{1})}{B - AR}
-$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(b) What is the relationship between an investor's $\gamma$ and the expected return of the chosen portfolio (including the bond) in this case?</b></p>
+<h1 id="2.-Measurability">2. Measurability<a class="anchor-link" href="#2.-Measurability">&#182;</a></h1><blockquote><p><b>Consider the state space $\Omega = \mathbb{R}$, with the $\sigma$-algebra $\mathcal{F} = \{(-\infty, 0], (0, \infty), \emptyset, \mathbb{R}\}$, and the random variable $X:\Omega \rightarrow \mathbb{R}$ defined by:</b></p>
 </blockquote>
 
 </div>
@@ -14012,42 +13159,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$\lim_{\gamma \to \infty} \mathbf{h} = \lim_{\gamma \to \infty} \frac{1}{\gamma} \Sigma^{-1}(\mu - R\mathbf{1}) = 0$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-$$ \lim_{\mathbf{h} \to 0} R + \mathbf{h}^T(\mu - R\mathbf{1}) = R$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>As gamma gets larger the weights on the stock portfolio get smaller driving the expected return to R</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Conversley if $\gamma$ goes to zero the weights on the stock portfolio will get larger and the expected return will be driven by the expected returns of the stocks in the portfolio thus giving the portfolio greater and greater risk.</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="4.-The-Capital-Asset-Pricing-Model-(CAPM):">4. The Capital Asset Pricing Model (CAPM):<a class="anchor-link" href="#4.-The-Capital-Asset-Pricing-Model-(CAPM):">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><b>(a) Using the below, show that CAPM relationship holds.</b></p>
+<blockquote><center>$X(\omega) = \left\{ \begin{array}{ll} 3 \quad \omega < 0 \\ 5 \quad \omega \geq 0 \end{array} \right. $</center>
 </blockquote>
 
 </div>
@@ -14056,56 +13168,198 @@ $$ \lim_{\mathbf{h} \to 0} R + \mathbf{h}^T(\mu - R\mathbf{1}) = R$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ \mu_n - R = \beta_n(\mu_{market} - R) \;\;\;\;\;\;\;\;\; \beta_n = \frac{Cov(\tilde{\mu}_n, \tilde{\mu}_{market})}{\sigma^2_{market}} \;\;\;\;\;\;\;\;\; \beta = \frac{1}{\mathbf{w}^T \Sigma \mathbf{w}} \Sigma \mathbf{w}$$
+<blockquote><p><b>(a) Is X $\mathcal{F}$ measurable?</b></p>
+</blockquote>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ \mathbf{w} = \frac{1}{B-AR}\Sigma^{-1}(\mathbf{\mu} - R\mathbf{1}) \tag{11}$$
+<center>No. Consider the interval $I = [4,10]$, then $X^{-1}(I) = [0, \infty) \notin \mathcal{F}$</center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ (B-AR) \Sigma \mathbf{w} = \Sigma \Sigma^{-1}(\mathbf{\mu} - R\mathbf{1}) $$
+<h1 id="3.-Stochastic-Integration">3. Stochastic Integration<a class="anchor-link" href="#3.-Stochastic-Integration">&#182;</a></h1><blockquote><p><b>(a) Given that the company chooses a fixed investment strategy $I \equiv k$, between time 0 and T, derive an expression for what the value of of the project at time T is. The value should be expressed as a function of $W_T$, $k$, $\mu$ and $\sigma$.</b></p>
+</blockquote>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ (B-AR) \Sigma \mathbf{w} = \mathbf{\mu} - R\mathbf{1} \tag{12}$$
+$$V_T = \mu k \int_0^Tdt + \sigma k\oint_0^TdW_t$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ (B-AR) \beta \mathbf{w}^T \Sigma \mathbf{w} = \beta \mathbf{w}^T (\mathbf{\mu} - R\mathbf{1}) $$
+$$V_T = \mu k T + \sigma k W_T$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ (B-AR) \frac{\Sigma \mathbf{w}}{\mathbf{w}^T \Sigma \mathbf{w}} \mathbf{w}^T \Sigma \mathbf{w} = \beta \mathbf{w}^T (\mathbf{\mu} - R\mathbf{1}) $$
+<blockquote><p><b>(b) Assume that the company must determine a constant investment strategy at $t=0$, $I\equiv k$. What value of k should the company choose?</b></p>
+</blockquote>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ (B-AR) \Sigma \mathbf{w} = \beta \mathbf{w}^T (\mathbf{\mu} - R\mathbf{1}) $$
+$$U = E(V_T) - \frac{\gamma}{2}Var(V_T)$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$ \mathbf{\mu} - R\mathbf{1} = \beta \mathbf{w}^T (\mathbf{\mu} - R\mathbf{1}) \because (12)$$
+$$U = \mu kT - \frac{\gamma}{2}\sigma^2 k^2 T$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\frac{dU}{dk} = \mu T - \gamma \sigma^2 k T = 0$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\gamma \sigma^2 kT = \mu T$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$k = \frac{\mu}{\gamma \sigma^2}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>$\frac{d^2 U}{(dk)^2} = - \gamma \sigma^2 T < 0$ so we have found a local maximum.</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="4.-Ito's-Lemma">4. Ito's Lemma<a class="anchor-link" href="#4.-Ito's-Lemma">&#182;</a></h1><blockquote><p><b>(a) Consider the stochastic process:</p>
+</blockquote>
+<p><center>$dX_t = \mu dt + \sigma dW_t$</center>
+&lt;/b&gt;</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p><b>Find a closed form expression for Q, defined by the stochastic integral:</b></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$Q = \oint_0^T 3X_t(\mu X_t + \sigma^2)dt + 3X_t \sigma dW_t$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p><b>by postulating a function $G(t, W_t)$ that satisfies:</b></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$dG_t = 3X_t(\mu X_t + \sigma^2)dt + 3X_t^2 \sigma dW_t$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p><b>and using the definition of the stochastic integral in class to get:</b></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$Q = G(T, W_T) - G(0, W_0)$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>There are only a few terms in the differential so I will guess $G_t = 0$.</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$dG_t = 3\mu X_t^2  dt + 3\sigma^2 X_t  dt + 3X_t^2 \sigma dW_t = G_X dX + \frac{1}{2}G_{XX}(dX)^2$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$dG_t = 3X_t^2(\mu dt + \sigma dW_t) + \frac{1}{2}6 X_t \sigma^2  dt = G_X dX + \frac{1}{2}G_{XX}(dX)^2$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$dG_t = 3X_t^2 dX + \frac{1}{2}6 X_t (dX)^2 = G_X dX + \frac{1}{2}G_{XX}(dX)^2$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \implies G_X = 3X^2 \;\;\;\;\; G_{XX} = 6X \;\;\;\;\; $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>Possible solution: $G(t, W_t) = X_t^3 = (X(0) + \mu t + \sigma W_t)^3$</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$Q = G(T, W_T) - G(0, W_0) = (X(0) + \mu T + \sigma W_T)^3 - X(0)^3$$
 </div>
 </div>
 </div>
